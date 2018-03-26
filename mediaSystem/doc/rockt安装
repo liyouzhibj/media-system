@@ -7,7 +7,7 @@ Git
   > cd distribution/target/apache-rocketmq
 Start Name Server
   > nohup sh bin/mqnamesrv &
-  > cat nohup.out (启动报错，有可能是设置的jvm内存太大，再/data/rocketmq-all-4.2.0/distribution/target/apache-rocketmq/bin/runbroker.sh
+  > cat nohup.out (查看报错原因，启动报错，有可能是设置的jvm内存太大，再/data/rocketmq-all-4.2.0/distribution/target/apache-rocketmq/bin/runbroker.sh
     /data/rocketmq-all-4.2.0/distribution/target/apache-rocketmq/bin/runserver.sh 里面配置jvm)
   > tail -f ~/logs/rocketmqlogs/namesrv.log
   The Name Server boot success...
@@ -16,6 +16,8 @@ Start Broker
 启动Start Name Server、Start Broker：
 nohup sh bin/mqnamesrv &
 nohup sh bin/mqbroker -n ${namesrvIp}:9876 -c /data/rocketmq-all-4.2.0/distribution/target/apache-rocketmq/conf/broker.conf &
+（如果不这样启动的话，用java代码发送数据给mq会报错org.apache.rocketmq.remoting.exception.RemotingConnectException: connect to <172.17.42.1:10911> failed
+，而且百度说在java代码添加一行producer.setVipChannelEnabled(false);也没用）
 停止：
 sh bin/mqshutdown broker
 sh bin/mqshutdown namesrv
