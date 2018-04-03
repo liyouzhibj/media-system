@@ -1,0 +1,29 @@
+server:
+  port: 8777
+spring:
+  application:
+    name: cloud-config-service
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/liyouzhibj/media-system.git     # 配置git仓库的地址
+          search-paths: config                             # git仓库地址下的相对地址，可以配置多个，用,分割。
+          username: 296835338@qq.com                                        # git仓库的账号
+          password: 296835338de                                    # git仓库的密码
+  rabbitmq:
+    host: 140.143.29.54
+    port: 5672
+    username: guest
+    password: guest
+#用yml链接还不能这样写：http\://localhost\:8773/eureka/
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8773/eureka/   ## 注册中心eurka地址
+
+
+management:
+  security:
+     enabled: false
+
