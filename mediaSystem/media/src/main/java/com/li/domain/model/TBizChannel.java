@@ -34,7 +34,9 @@ public class TBizChannel implements Serializable {
     private Integer sequenceNo;
     @TableField("userId")
     private Integer userId;
+    private String updateTime;
 
+    private String createTime;
 
     public Integer getId() {
         return id;
@@ -114,6 +116,22 @@ public class TBizChannel implements Serializable {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    public String getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
     }
 
     @Override

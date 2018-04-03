@@ -2,7 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.li.mapper.TBizArticleMapper">
 
+    <resultMap id="commMap"  type="com.li.domain.model.Content">
+        <result property="id" column="id"/>
+        <result property="title" column="title" />
+        <result property="abstract" column="abstracts" />
+        <result property="thumbnail" column="thumbnail" />
+        <result property="isTop" column="isTop" />
+        <result property="content" column="content" />
+        <result property="abstracts" column="abstracts" />
+        <result property="createTime" column="createTime" />
+        <result property="updateTime" column="updateTime" />
+        <result property="adsThumbnail" column="adsThumbnail" />
+        <result property="isAds" column="isAds" />
+    </resultMap>
     <!-- 开启二级缓存 -->
     <!--<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>-->
-
+    <select id="queryByChannel" parameterType="java.util.HashMap" resultMap="commMap">
+        SELECT * FROM t_biz_article t LEFT JOIN t_biz_article_channel tc ON t.id = tc.artId WHERE t.`status`=1
+        <if test="channelId!=null and type=1"> AND tc.channelId = #{channelId}</if>
+        <if test="specialId!=null and type=2"> AND t.specialId =#{specialId}</if>
+        ORDER BY t.sequenceNo DESC ,t.createTime DESC
+        <if test="start!=null and size!=null">LIMIT #{start},#{size}</if>
+    </select>
 </mapper>

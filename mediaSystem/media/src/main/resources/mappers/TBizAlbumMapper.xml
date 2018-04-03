@@ -4,5 +4,21 @@
 
     <!-- 开启二级缓存 -->
     <!--<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>-->
-
+    <resultMap id="commMap"  type="com.li.domain.model.Content">
+        <result property="id" column="id"/>
+        <result property="title" column="name" />
+        <result property="abstract" column="abstracts" />
+        <result property="thumbnail" column="thumbnail" />
+        <result property="abstracts" column="abstracts" />
+        <result property="createTime" column="createTime" />
+        <result property="updateTime" column="updateTime" />
+    </resultMap>
+    <!-- 开启二级缓存 -->
+    <!--<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>-->
+    <select id="queryByChannel" parameterType="java.util.HashMap" resultMap="commMap">
+        SELECT * FROM t_biz_album t LEFT JOIN t_biz_album_channel tc ON t.id = tc.albumId WHERE t.`status`=1
+        <if test="channelId!=null"> AND tc.channelId = #{channelId}</if>
+        ORDER BY t.sequenceNo DESC ,t.createTime DESC
+        <if test="start!=null and size!=null">LIMIT #{start},#{size}</if>
+    </select>
 </mapper>

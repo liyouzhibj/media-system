@@ -1,9 +1,13 @@
 package com.li.mapper;
 
+import com.li.domain.model.Content;
 import com.li.domain.model.TBizVideo;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -17,4 +21,5 @@ import org.springframework.stereotype.Component;
 @Mapper
 public interface TBizVideoMapper extends BaseMapper<TBizVideo> {
 
+    List<Content> queryByChannel(Map<String, Object> map);
 }

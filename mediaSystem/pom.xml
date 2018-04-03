@@ -13,8 +13,15 @@
         <module>media</module>
 		<module>spingCloudEurekaServer</module>
 		<module>cloudZuul</module>
+        <module>spring-cloud-config-service</module>
     </modules>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.6.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
     <dependencyManagement>
 
         <dependencies>
@@ -83,6 +90,25 @@
                 <artifactId>druid</artifactId>
                 <version>1.0.13</version>
             </dependency>
+
+            <!--  <dependency>
+                  <groupId>com.alibaba.rocketmq</groupId>
+                  <artifactId>rocketmq-client</artifactId>
+                  <version>3.6.2.Final</version>
+              </dependency>-->
+            <!--<dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-bus-amqp</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-config-server</artifactId>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-actuator</artifactId>
+            </dependency>-->
         </dependencies>
 
 

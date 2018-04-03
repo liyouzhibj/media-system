@@ -1,9 +1,13 @@
 package com.li.mapper;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
+import com.li.domain.model.Content;
 import com.li.domain.model.TBizAlbum;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -16,5 +20,5 @@ import org.springframework.stereotype.Component;
 @Component
 @Mapper
 public interface TBizAlbumMapper extends BaseMapper<TBizAlbum> {
-
+    List<Content> queryByChannel(Map<String,Object> map);
 }
